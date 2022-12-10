@@ -27,15 +27,14 @@ body {
     flex-flow: column nowrap;
     gap: 10px;
     height: fit-content;
-    max-width: 975px;
+    max-width: 575px;
     overflow: auto;
-    padding: 50px;
     position: relative;
     width: auto;
-    gap: 64px;
+    gap: 20px;
 }
 
-.header {    
+.header {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -56,6 +55,7 @@ body {
     line-height: 1.2em;
     text-align: center;
     margin: 0;
+    color: #ED3175;
 }
 
 .header-subtitle h2 {
@@ -63,7 +63,42 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 1.4em;
-    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    color: #ffc82dd1;
+}
+
+.header-subtitle a {
+    color: #E99475;
+    text-decoration: none;
+}
+
+.header-subtitle a:hover {
+    color: #ED3175;
+}
+
+.header-links a {
+    color: #E99475;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4em;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.header-links a:hover {
+    color: #ED3175;
+}
+
+.header-links hr {
+  border: 1px solid black;
+  background: linear-gradient(to right, #ed3175d9,#EE649C,#ED3175);
+  border-radius: 4px;
+  height: 3px;
+}
+
+.header-links {
+    margin-bottom: 20px;
 }
 
 .prompt-container {
@@ -80,25 +115,25 @@ body {
 
 .prompt-box {
     border-bottom-width: 1px;
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: #746C64;
     border-left-width: 1px;
     border-right-width: 1px;
     border-style: solid;
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: white;
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
     gap: 10px;
-    height: 150px;
+    height: 30px;
     overflow: hidden;
     padding: 20px;
     position: relative;
-    width: 610px;
-    max-width: 1200px;
+    width: 310px;
+    max-width: 600px;
     will-change: transform;
     overflow: auto;
     outline: none;
@@ -108,7 +143,42 @@ body {
     letter-spacing: 0px;
     line-height: 1.6em;
     text-align: start;
-    color: rgba(255, 255, 255, 0.75);
+    color: #746C64;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.prompt-box-tall {
+    border-bottom-width: 1px;
+    border-color: #746C64;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-style: solid;
+    border-top-width: 1px;
+    place-content: flex-start;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 16px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: column nowrap;
+    gap: 10px;
+    height: 500px;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+    width: 310px;
+    max-width: 600px;
+    will-change: transform;
+    overflow: auto;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    font-style: normal;
+    letter-spacing: 0px;
+    line-height: 1.6em;
+    text-align: start;
+    color: #746C64;
     text-decoration: none;
     text-transform: none;
 }
@@ -127,13 +197,14 @@ textarea {
     display: flex;
     place-content: center;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     flex: 0 0 auto;
     flex-flow: row nowrap;
     gap: 12px;
     height: min-content;
     overflow: hidden;
-    padding: 0px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     position: relative;
     width: 100%;
 }
@@ -172,15 +243,15 @@ textarea {
 .generate-button {
     place-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(255, 79, 18);
-    border-radius: 100px;
+    background-color: #ED3175;
+    border-radius: 20px;
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
     gap: 10px;
     height: min-content;
     overflow: hidden;
-    padding: 16px 24px;
+    padding: 15px;
     position: relative;
     text-decoration: none;
     width: min-content;
@@ -191,7 +262,7 @@ textarea {
 .generate {
     outline: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     flex-shrink: 0;
     transform: none;
@@ -280,6 +351,7 @@ textarea {
     overflow: hidden;
     position: relative;
     width: 100%;
+    padding-bottom: 30px;
 }
 
 .output-header-container {
@@ -288,7 +360,6 @@ textarea {
     display: flex;
     flex: 0 0 auto;
     flex-flow: column nowrap;
-    gap: 16px;
     height: min-content;
     overflow: hidden;
     padding: 0px;
@@ -315,16 +386,50 @@ textarea {
     display: flex;
     /* max-width: 25%; */
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: start;
     flex-shrink: 0;
     transform: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .output-content p {
-    text-align: center;
-    white-space: pre-line;
-    color: rgba(255, 255, 255, 0.5);
+    justify-content: start;
+    color: black;
 }
+
+/* Home Page */
+.text-content {
+  color: white;
+}
+
+ /* Tools Page */
+ .tools-list li {
+   padding: 10px;
+ }
+
+ .tools-list p {
+   color: #E99475;
+   font-size: 12px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 1em;
+   text-decoration: none;
+ }
+
+ .tools-list a {
+   color: #E99475;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 2em;
+   text-decoration: none;
+ }
+
+ .tools-list a:hover {
+     color: #ED3175;
+ }
 
 @media (min-width: 810px) and (max-width: 1199px) {
     .container {
@@ -376,10 +481,6 @@ textarea {
         display: none;
     }
 
-    .prompt-buttons {
-        justify-content: center;
-    }
-
     .prompt-container {
         max-width: 400px;
         width: 100%;
@@ -412,4 +513,31 @@ textarea {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+.blog-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.blog-grid-item {
+  color: black;
+  background-color: white;
+  padding: 1rem;
+  height: 12rem;
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px #E99475;
+}
+
+.blog-grid-item:hover {
+  cursor: pointer;
+  box-shadow: 4px 4px 6px #ED3175;
+}
+
+.blog-post-container {
+  color: white;
 }
