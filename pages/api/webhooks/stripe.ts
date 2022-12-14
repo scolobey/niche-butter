@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { buffer } from 'micro';
 import Stripe from 'stripe';
 import prisma from "../../../prisma/prismadb"
@@ -17,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     const requestBuffer = await buffer(req);
     const sig = req.headers['stripe-signature'] as string;
     const stripe = new Stripe(endpointSecret as string, {
-      apiVersion: '2020-08-27',
+      apiVersion: '2022-11-15',
     });
 
     let event;
