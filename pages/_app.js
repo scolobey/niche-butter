@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Script from "next/script"
 import { useTheme } from 'next-themes'
 import { SessionProvider } from "next-auth/react"
-import Header from "../src/components/Header";
+import Header from "./components/Header";
 
 function App({
   Component,
