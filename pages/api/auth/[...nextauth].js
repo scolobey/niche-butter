@@ -13,7 +13,8 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET
     }),
     DiscordProvider({
-
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET
     })
   ],
   theme: {
@@ -21,16 +22,14 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, user }) {
-      console.log("callback from sess user: ", JSON.stringify(user));
-
-      session.user.id = user.id;
 
       const dbUser = await prisma.user.findFirst({
         where: {
           id: user.id,
         }
       })
-
+      
+      session.user.id = user.id;
       session.user.isActive = dbUser.isActive;
       session.user.credits = dbUser.credits;
       session.user.stripeId = dbUser.stripeId;
