@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai';
+import prisma from "../../prisma/prismadb"
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -12,8 +13,6 @@ topics:
 `;
 
 const selectTopic = async (req, res) => {
-  // Run first prompt
-  console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -24,7 +23,14 @@ const selectTopic = async (req, res) => {
 
   const basePromptOutput = baseCompletion.data.choices.pop();
 
-  res.status(200).json({ output: basePromptOutput });
+  const prismaUser = await prisma.user.update({
+    where: { id: req.body.session.user.id },
+    data: {
+      credits: req.body.session.user.credits-100
+    },
+  });
+
+  res.status(200).json({ output: basePromptOutput, user: prismaUser });
 };
 
 export default selectTopic;

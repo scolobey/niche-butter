@@ -7,15 +7,21 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const basePromptPrefix = "Write a detailed and outline for a blog post on the topic of ";
+const postFromOutline = async (req, res) => {
 
-const generateOutline = async (req, res) => {
+  const basePromptPrefix =
+  `
+  Take the table of contents below and generate a blog post written in the style of Tim Ferriss. Don't just list the points. Go deep into each one. Make it feel like a story. Explain why.
 
+  Table of Contents: ${req.body.userInput}
+
+  Blog Post:
+  `
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `${basePromptPrefix}${req.body.userInput}`,
-    temperature: 0.7,
-    max_tokens: 800,
+    temperature: 0.80,
+    max_tokens: 1500,
   });
 
   const basePromptOutput = baseCompletion.data.choices.pop();
@@ -27,7 +33,8 @@ const generateOutline = async (req, res) => {
     },
   });
 
+  // Send over the Prompt #2's output to our UI instead of Prompt #1's.
   res.status(200).json({ output: basePromptOutput, user: prismaUser });
 };
 
-export default generateOutline;
+export default postFromOutline;

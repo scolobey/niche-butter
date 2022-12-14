@@ -4,7 +4,8 @@ import Link from "next/link"
 import { useState } from 'react';
 import { useSession, signIn } from "next-auth/react"
 
-const TopicSelector = () => {
+const PostFromOutlineGenerator = () => {
+
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -40,7 +41,7 @@ const TopicSelector = () => {
   const callEndpoint = async () => {
     setIsGenerating(true);
 
-    const response = await fetch('/api/selectTopic', {
+    const response = await fetch('/api/postFromOutline', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -64,35 +65,36 @@ const TopicSelector = () => {
   return (
     <div>
       <Head>
-        <title>NicheButter | Topic Selector</title>
+        <title>NicheButter | Outline Generator</title>
       </Head>
 
       <div className="container">
         {apiOutput? (
           <div className="header-subtitle">
-            <h2>And here's your recommended topic...</h2>
+            <h2>And here's your post...</h2>
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>First we need to pick a topic. Make a list of things you're interested in. Then scroll down and click submit.</h2>
+            <h2>Just paste in your outline and we'll write you an article. It will need some editing and fact checking of course. Don't expect AI to do all the work for you.</h2>
           </div>
         )}
 
         <div>
           {apiOutput? (
             <div className="output">
-              <div className="output-content">
-                <p>{apiOutput}</p>
-              </div>
+              <textarea
+                className="prompt-box-tall"
+                value={apiOutput}
+              />
               <div className="header-subtitle">
-                <h2>Now let's generate some associated topic clusters.</h2>
+                <h2>It's a start at least.</h2>
                 <div className="prompt-buttons">
                   <a
                     className='generate-button'
-                    href="cluster-generator"
+                    href="/"
                   >
                     <div className="generate">
-                      <p>OK!</p>
+                      <p>Home</p>
                     </div>
                   </a>
                 </div>
@@ -153,4 +155,4 @@ const TopicSelector = () => {
   );
 };
 
-export default TopicSelector;
+export default PostFromOutlineGenerator;

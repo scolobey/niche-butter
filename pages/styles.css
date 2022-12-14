@@ -3,7 +3,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(0, 0, 0);
 }
 
 .root {
@@ -20,6 +21,7 @@ body {
 }
 
 .container {
+    background-color: black;
     display: flex;
     place-content: center flex-start;
     align-items: center;
@@ -35,6 +37,7 @@ body {
 }
 
 .header {
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -64,7 +67,7 @@ body {
     font-weight: 400;
     line-height: 1.4em;
     text-align: center;
-    color: #ffc82dd1;
+    color: #39FF14;
 }
 
 .header-subtitle a {
@@ -142,7 +145,7 @@ body {
     font-style: normal;
     letter-spacing: 0px;
     line-height: 1.6em;
-    text-align: start;
+    text-align: flex-start;
     color: #746C64;
     text-decoration: none;
     text-transform: none;
@@ -177,7 +180,7 @@ body {
     font-style: normal;
     letter-spacing: 0px;
     line-height: 1.6em;
-    text-align: start;
+    text-align: flex-start;
     color: #746C64;
     text-decoration: none;
     text-transform: none;
@@ -374,7 +377,7 @@ textarea {
     font-weight: 800;
     letter-spacing: 0px;
     line-height: 1.4em;
-    text-align: start;
+    text-align: flex-start;
     color: #ffffff;
     text-decoration: none;
     text-transform: none;
@@ -386,7 +389,7 @@ textarea {
     display: flex;
     /* max-width: 25%; */
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     flex-shrink: 0;
     transform: none;
     background-color: white;
@@ -395,7 +398,7 @@ textarea {
 }
 
 .output-content p {
-    justify-content: start;
+    justify-content: flex-start;
     color: black;
 }
 
@@ -410,8 +413,8 @@ textarea {
  }
 
  .tools-list p {
-   color: #E99475;
-   font-size: 12px;
+   color: #39FF14;
+   font-size: 18px;
    font-style: normal;
    font-weight: 400;
    line-height: 1em;
@@ -419,16 +422,16 @@ textarea {
  }
 
  .tools-list a {
-   color: #E99475;
+   color: #FF10F0;
    font-size: 20px;
    font-style: normal;
-   font-weight: 400;
+   font-weight: 600;
    line-height: 2em;
    text-decoration: none;
  }
 
  .tools-list a:hover {
-     color: #ED3175;
+     color: #ccff00;
  }
 
 @media (min-width: 810px) and (max-width: 1199px) {
@@ -471,10 +474,6 @@ textarea {
 
     .header-title h1 {
         font-size: 50px;
-    }
-
-    .header-subtitle h2 {
-        text-align: center;
     }
 
     .key-stroke, .or {
@@ -540,4 +539,93 @@ textarea {
 
 .blog-post-container {
   color: white;
+}
+
+.auth-button button {
+  position: fixed;
+  top: 2em;
+  right: 5em;
+  place-content: flex-start;
+  align-items: flex-start;
+  background-color: #FF10F0;
+  box-shadow: 3px 3px 4px #ccff00;
+  font-size: 22px;
+  color: white;
+  border: 2px solid #39FF14;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 15px;
+  text-decoration: none;
+  width: 150px;
+  cursor: pointer;
+}
+
+.auth-button button:hover {
+  box-shadow: 4px 4px 6px #04d9ff;
+}
+
+.credits-report{
+  position: fixed;
+  width: 110px;
+  padding: 15px 15px 0px 15px;
+  top: 6em;
+  right: 5em;
+  font-weight: 30;
+  font-size: 22px;
+  border: 2px solid #39FF14;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.buy-button {
+    place-content: flex-start;
+    align-items: flex-start;
+    background-color: #FF10F0;
+    box-shadow: 3px 3px 4px #ccff00;
+    font-size: 22px;
+    color: white;
+    border: 2px solid #39FF14;
+    border-radius: 20px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: column nowrap;
+    gap: 10px;
+    height: min-content;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    text-decoration: none;
+    width: 80px;
+    will-change: transform;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.signout-button button {
+  position: fixed;
+  top: 2em;
+  right: 5em;
+  display: flex;
+  place-content: flex-start;
+  align-items: flex-start;
+  background-color: #2f91a3;
+  box-shadow: 3px 3px 4px #ccff00;
+  font-size: 22px;
+  color: white;
+  border: 2px solid #39FF14;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 15px;
+  text-decoration: none;
+  width: 150px;
+  cursor: pointer;
+}
+
+.signout-button button:hover {
+  box-shadow: 4px 4px 6px #04d9ff;
+}
+
+.signout-button img {
+  margin-left: 10px;
+  border-radius: 50%;
 }

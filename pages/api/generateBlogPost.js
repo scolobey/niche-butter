@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai';
+import prisma from "../../prisma/prismadb"
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -8,15 +9,13 @@ const openai = new OpenAIApi(configuration);
 
 const basePromptPrefix = "Write a detailed outline for a blog post on the topic of ";
 
-const generateOutline = async (req, res) => {
-  // Run first prompt
-  console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
+const generateBlogPost = async (req, res) => {
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `${basePromptPrefix}${req.body.userInput}`,
     temperature: 0.7,
-    max_tokens: 1500,
+    max_tokens: 700,
   });
 
   const basePromptOutput = baseCompletion.data.choices.pop();
@@ -38,14 +37,21 @@ const generateOutline = async (req, res) => {
     // I set a higher temperature for this one. Up to you!
     temperature: 0.85,
 		// I also increase max_tokens.
-    max_tokens: 1250,
+    max_tokens: 1500,
   });
 
   // Get the output
   const secondPromptOutput = secondPromptCompletion.data.choices.pop();
 
+  const prismaUser = await prisma.user.update({
+    where: { id: req.body.session.user.id },
+    data: {
+      credits: req.body.session.user.credits-200
+    },
+  });
+
   // Send over the Prompt #2's output to our UI instead of Prompt #1's.
-  res.status(200).json({ output: secondPromptOutput });
+  res.status(200).json({ output: secondPromptOutput, user: prismaUser });
 };
 
-export default generateOutline;
+export default generateBlogPost;

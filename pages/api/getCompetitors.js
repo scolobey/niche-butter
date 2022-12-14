@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai';
+import prisma from "../../prisma/prismadb"
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -13,13 +14,19 @@ const getCompetitors = async (req, res) => {
     model: 'text-davinci-003',
     prompt: `${basePrompt}`,
     temperature: 0.7,
-    max_tokens: 1500,
+    max_tokens: 100,
   });
 
   const basePromptOutput = baseCompletion.data.choices.pop();
 
-  // Send over the Prompt #2's output to our UI instead of Prompt #1's.
-  res.status(200).json({ output: basePromptOutput });
+  const prismaUser = await prisma.user.update({
+    where: { id: req.body.session.user.id },
+    data: {
+      credits: req.body.session.user.credits-100
+    },
+  });
+
+  res.status(200).json({ output: basePromptOutput, user: prismaUser });
 };
 
 export default getCompetitors;

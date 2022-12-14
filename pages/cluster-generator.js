@@ -2,28 +2,56 @@ import Head from 'next/head';
 import Link from "next/link"
 
 import { useState } from 'react';
+import { useSession, signIn } from "next-auth/react"
 
 const ClusterGenerator = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
+
+  const { data: session } = useSession()
+
+  const reloadSession = () => {
+    const event = new Event("visibilitychange");
+    document.dispatchEvent(event);
+  };
+
+  const goToCheckout = async () => {
+    setIsCheckoutLoading(true);
+
+    const res = await fetch(`/api/stripe/create-checkout-session`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const { redirectUrl } = await res.json();
+
+    if (redirectUrl) {
+      window.location.assign(redirectUrl);
+    } else {
+      setIsCheckoutLoading(false);
+      console.log("Error creating checkout session");
+    }
+  };
 
   const callEndpoint = async () => {
     setIsGenerating(true);
-
-    console.log("Calling OpenAI...")
 
     const response = await fetch('/api/generateTopicCluster', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userInput }),
+      body: JSON.stringify({ userInput, session }),
     });
 
     const data = await response.json();
-    const { output } = data;
-    console.log("OpenAI replied...", output.text)
+    const { output, user } = data;
+
+    reloadSession();
 
     setApiOutput(`${output.text}`);
     setIsGenerating(false);
@@ -79,17 +107,46 @@ const ClusterGenerator = () => {
                 value={userInput}
                 onChange={onUserChangedText}
               />
+
               <div className="prompt-buttons">
-                <a
-                  className={isGenerating ? 'generate-button loading' : 'generate-button'}
-                  onClick={callEndpoint}
-                >
-                  <div className="generate">
-                    {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
+                {session ? (
+                  <div>
+                    {session.user.credits >= 100 ? (
+                      <div>
+                        <a
+                          className={isGenerating ? 'generate-button loading' : 'generate-button'}
+                          onClick={callEndpoint}
+                        >
+                          <div className="generate">
+                            {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
+                          </div>
+                        </a>
+                      </div>
+                    ) : (
+                      <a className='generate-button'
+                        onClick={() => {
+                          if (isCheckoutLoading) return;
+                          else goToCheckout();
+                        }}
+                      >
+                        {isCheckoutLoading ? (
+                          <div className="generate">
+                            <p>Loading...</p>
+                          </div>
+                        ) : (
+                          <div className="generate">
+                            <p>GetCredits</p>
+                          </div>
+                        )}
+                      </a>
+                    )}
                   </div>
-                </a>
+                ) : (
+                  <a className='generate-button' onClick={() => signIn()}>SignIn</a>
+                )}
               </div>
-              </div>
+
+            </div>
           )}
         </div>
       </div>
