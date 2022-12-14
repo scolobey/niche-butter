@@ -6,8 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "vercel-build": "npm run prisma generate && npm run prisma migrate deploy && next build",
-    "prisma:generate": "npm run prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "prisma:generate": "prisma generate",
     "lint": "next lint"
   },
   "dependencies": {
