@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: 'payment',
-    customer: session?.user?.stripeId,
+    customer: session?.user?.stripeId?,
     line_items: [
       {
         price: "price_1MEjzuKTvAilJ9RoLxoLOJLj",
