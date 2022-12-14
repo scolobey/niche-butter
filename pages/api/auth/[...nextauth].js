@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import DiscordProvider from "next-auth/providers/discord"
 import Stripe from 'stripe';
-import PrismaAdapter from "@next-auth/prisma-adapter"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "../../../prisma/prismadb"
 
 export const authOptions = {
