@@ -14,9 +14,9 @@ export const config = {
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
     const requestBuffer = await buffer(req);
-    const sig = req.headers['stripe-signature'] as string;
-    const stripe = new Stripe(endpointSecret as string, {
-      apiVersion: '2020-08-27',
+    const sig = req.headers['stripe-signature'];
+    const stripe = new Stripe(endpointSecret, {
+      apiVersion: '2022-11-15',
     });
 
     let event;
@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       case 'payment_intent.succeeded':
         const paymentIntent = event.data.object;
          await prisma.user.update({
-           where: { stripeId: paymentIntent.customer as string },
+           where: { stripeId: paymentIntent.customer},
            data: {
              isActive: true,
              credits: {increment: 2000}
