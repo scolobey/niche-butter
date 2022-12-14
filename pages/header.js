@@ -2,7 +2,7 @@ import React from "react";
 import Image from 'next/image';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useState } from 'react';
-import nicheButterLogo from '../../assets/niche-butter-dark.png';
+import nicheButterLogo from '../assets/niche-butter-dark.png';
 
 export default function Header() {
   const { data: session, status } = useSession()
