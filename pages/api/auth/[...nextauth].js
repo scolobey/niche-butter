@@ -40,34 +40,34 @@ export const authOptions = {
     },
   },
   secret: process.env.SECRET,
-  events: {
-    updateUser: async ({ user }) => {
-      console.log("update user callback");
-    },
-    createUser: async ({ user }) => {
-      // Create stripe API client using the secret key env variable
-      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-        apiVersion: "2020-08-27"
-      });
-
-      // Create a stripe customer for the user with their email address
-      await stripe.customers
-      .create({
-        email: user.email,
-      })
-      .then(async (customer) => {
-        // Use the Prisma Client to update the user in the database with their new Stripe customer ID
-        console.log("setting stripe user:" + JSON.stringify(customer));
-        return prisma.user.update({
-          where: { id: user.id },
-          data: {
-            stripeId: customer.id,
-            credits: 0
-          },
-        });
-      });
-    }
-  }
+  // events: {
+  //   updateUser: async ({ user }) => {
+  //     console.log("update user callback");
+  //   },
+  //   createUser: async ({ user }) => {
+  //     // Create stripe API client using the secret key env variable
+  //     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  //       apiVersion: "2020-08-27"
+  //     });
+  //
+  //     // Create a stripe customer for the user with their email address
+  //     await stripe.customers
+  //     .create({
+  //       email: user.email,
+  //     })
+  //     .then(async (customer) => {
+  //       // Use the Prisma Client to update the user in the database with their new Stripe customer ID
+  //       console.log("setting stripe user:" + JSON.stringify(customer));
+  //       return prisma.user.update({
+  //         where: { id: user.id },
+  //         data: {
+  //           stripeId: customer.id,
+  //           credits: 0
+  //         },
+  //       });
+  //     });
+  //   }
+  // }
 }
 
 export default NextAuth(authOptions)
