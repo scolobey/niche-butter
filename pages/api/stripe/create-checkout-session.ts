@@ -30,8 +30,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         quantity: 1,
       },
     ],
-    success_url: `${process.env.ORIGIN}/?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${process.env.ORIGIN}/?cancelledPayment=true`
+    success_url: `${req.headers.origin}/?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${req.headers.origin}/?cancelledPayment=true`
   });
 
   if (!checkoutSession.url) {
