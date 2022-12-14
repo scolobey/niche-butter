@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/react';
 import Stripe from 'stripe';
 
@@ -30,8 +30,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         quantity: 1,
       },
     ],
-    success_url: `${req.headers.origin}/?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${req.headers.origin}/?cancelledPayment=true`
+    success_url: `${process.env.ORIGIN}/?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.ORIGIN}/?cancelledPayment=true`
   });
 
   if (!checkoutSession.url) {
