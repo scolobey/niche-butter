@@ -39,6 +39,7 @@ export const authOptions = {
       return session;
     },
   },
+  secret: process.env.SECRET,
   events: {
     updateUser: async ({ user }) => {
       console.log("update user callback");
