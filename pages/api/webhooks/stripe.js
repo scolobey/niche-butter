@@ -13,10 +13,11 @@ export const config = {
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   try {
+    console.log("an event is occurring.");
     const requestBuffer = await buffer(req);
-    const sig = req.headers['stripe-signature'];
-    const stripe = new Stripe(endpointSecret, {
-      apiVersion: '2022-11-15',
+    const sig = req.headers['stripe-signature'] as string;
+    const stripe = new Stripe(endpointSecret as string, {
+      apiVersion: '2020-08-27',
     });
 
     let event;
@@ -37,8 +38,10 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     switch (event.type) {
       case 'payment_intent.succeeded':
         const paymentIntent = event.data.object;
+        console.log(`PaymentIntent for ${JSON.stringify(paymentIntent)} was successful!`);
+         // Then define and call a method to handle the successful payment intent.
          await prisma.user.update({
-           where: { stripeId: paymentIntent.customer},
+           where: { stripeId: paymentIntent.customer as string },
            data: {
              isActive: true,
              credits: {increment: 2000}
