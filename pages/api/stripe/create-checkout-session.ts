@@ -4,7 +4,7 @@ import Stripe from 'stripe';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2022-11-15',
   });
 
@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
 
   // Error handling
-  if (!session?.user) {
+  if (!session.user) {
     return res.status(401).json({
       error: {
         code: 'no-access',
@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: 'payment',
-    customer: session?.user?.stripeId?,
+    customer: session.user.stripeId,
     line_items: [
       {
         price: "price_1MEjzuKTvAilJ9RoLxoLOJLj",
