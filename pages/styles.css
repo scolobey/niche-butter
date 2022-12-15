@@ -516,7 +516,6 @@ textarea {
 
 
 .blog-container {
-  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -524,13 +523,17 @@ textarea {
 }
 
 .blog-grid-item {
-  color: black;
-  background-color: white;
-  padding: 1rem;
-  height: 12rem;
+  color: #FF10F0;
+  padding: 2rem;
+  height: 4rem;
   border-radius: 20px;
-  box-shadow: 4px 4px 6px #E99475;
+  box-shadow: 3px 3px 4px #ccff00;
+  font-size: 26px;
+  border: 2px solid #39FF14;
+  text-decoration: none;
+  margin: .25em;
 }
+
 
 .blog-grid-item:hover {
   cursor: pointer;
@@ -539,12 +542,51 @@ textarea {
 
 .blog-post-container {
   color: white;
+  font-size: 22px;
+  max-width: 575px;
 }
 
-.auth-button button {
+@media (max-width: 600px) {
+  .control-panel {
+    width: 100px !important;
+    top: 1em !important;
+    right: 1em !important;
+  }
+
+  .auth-button button {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+
+  .credits-report{
+    margin-top: 10px !important;
+    font-weight: 20 !important;
+    font-size: 8px !important;
+    padding: 5px 5px 0px 5px !important;
+  }
+
+  .buy-button {
+    padding: 5px !important;
+    width: 50px !important;
+    font-size: 14px !important;
+    margin-left: 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .signout-button button {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+}
+
+.control-panel {
   position: fixed;
   top: 2em;
   right: 5em;
+  width: 150px;
+}
+
+.auth-button button {
   place-content: flex-start;
   align-items: flex-start;
   background-color: #FF10F0;
@@ -556,7 +598,6 @@ textarea {
   overflow: hidden;
   padding: 15px;
   text-decoration: none;
-  width: 150px;
   cursor: pointer;
 }
 
@@ -565,11 +606,8 @@ textarea {
 }
 
 .credits-report{
-  position: fixed;
-  width: 110px;
+  margin-top:10px;
   padding: 15px 15px 0px 15px;
-  top: 6em;
-  right: 5em;
   font-weight: 30;
   font-size: 22px;
   border: 2px solid #39FF14;
@@ -578,33 +616,30 @@ textarea {
 }
 
 .buy-button {
-    place-content: flex-start;
-    align-items: flex-start;
-    background-color: #FF10F0;
-    box-shadow: 3px 3px 4px #ccff00;
-    font-size: 22px;
-    color: white;
-    border: 2px solid #39FF14;
-    border-radius: 20px;
-    display: flex;
-    flex: 0 0 auto;
-    flex-flow: column nowrap;
-    gap: 10px;
-    height: min-content;
-    overflow: hidden;
-    padding: 15px;
-    position: relative;
-    text-decoration: none;
-    width: 80px;
-    will-change: transform;
-    cursor: pointer;
-    margin-bottom: 15px;
+  place-content: flex-start;
+  align-items: flex-start;
+  background-color: #FF10F0;
+  box-shadow: 3px 3px 4px #ccff00;
+  font-size: 22px;
+  color: white;
+  border: 2px solid #39FF14;
+  border-radius: 20px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-flow: column nowrap;
+  gap: 10px;
+  height: min-content;
+  overflow: hidden;
+  padding: 15px;
+  position: relative;
+  text-decoration: none;
+  width: 80px;
+  will-change: transform;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .signout-button button {
-  position: fixed;
-  top: 2em;
-  right: 5em;
   display: flex;
   place-content: flex-start;
   align-items: flex-start;
@@ -617,7 +652,6 @@ textarea {
   overflow: hidden;
   padding: 15px;
   text-decoration: none;
-  width: 150px;
   cursor: pointer;
 }
 

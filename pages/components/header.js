@@ -40,7 +40,7 @@ export default function Header() {
           />
         </a>
 
-        <div>
+        <div className="control-panel">
           {status === 'loading' && <div className="auth-button">
             <button>Loading...</button>
           </div>}

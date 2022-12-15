@@ -28,7 +28,7 @@ export const authOptions = {
           id: user.id,
         }
       })
-      
+
       session.user.id = user.id;
       session.user.isActive = dbUser.isActive;
       session.user.credits = dbUser.credits;
@@ -60,7 +60,7 @@ export const authOptions = {
           where: { id: user.id },
           data: {
             stripeId: customer.id,
-            credits: 0
+            credits: 10000
           },
         });
 

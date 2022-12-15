@@ -1,0 +1,10 @@
+# www.robotstxt.org/
+
+Sitemap: https://www.nichebutter.com/sitemap.xml
+
+# Allow crawling of all content
+User-agent: *
+
+User-Agent: Googlebot
+Allow: *.js
+Allow: *.css
