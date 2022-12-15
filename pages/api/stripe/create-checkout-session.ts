@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     customer: session.user.stripeId,
     line_items: [
       {
-        price: "price_1MEjzuKTvAilJ9RoLxoLOJLj",
+        price: "price_1MF56SKTvAilJ9RoCjFUsLC3",
         quantity: 1,
       },
     ],
@@ -42,5 +42,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Return the newly-created checkoutSession URL and let the frontend render it
   return res.status(200).json({ redirectUrl: checkoutSession.url });
-
 };
