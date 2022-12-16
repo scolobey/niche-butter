@@ -1,5 +1,6 @@
 ---
 title: 'Tips For Choosing the Right Niche for Your Blog'
+description: 'This post will help you pick the perfect niche for your niche blog and avoid some of the most common mistakes.'
 date: '2022-12-02'
 ---
 

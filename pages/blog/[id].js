@@ -6,10 +6,9 @@ export default function Blog({ postData }) {
     <div className="blog-post-container">
       <Head>
         <title>{postData.title}</title>
+        <meta name="description" content={postData.description}/>
       </Head>
-      {postData.title}
-      <br />
-      {postData.id}
+      <h2>{postData.title}</h2>
       <br />
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </div>

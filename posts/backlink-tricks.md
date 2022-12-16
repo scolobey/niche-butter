@@ -1,9 +1,10 @@
 ---
 title: 'Workflows for Landing Backlinks'
+description: 'Some lesser known strategies for building your first backlinks. Step by step, this quide will get you started.'
 date: '2022-12-02'
 ---
 
-Looking into building some links? I don't envy you. It's a time consuming and thankless job. In fact, if you don't know what you're doing, this can easily suck up a massive amount of your time and result in a grand total of nothing. I made feeble attempts at building links for years before I ever made my first true link.
+Looking into building your first backlinks? I don't envy you. It's a time consuming and thankless job. In fact, if you don't know what you're doing, this can easily suck up a massive amount of your time and result in a grand total of nothing. I made feeble attempts at building links for years before I ever made my first true link.
 
 I don't want you to struggle with that. So here's my growing list of strategies with which I have found real success. Block off a few hours (or a few days honestly) and try each one of these strategies. Different angles will work better for different niches. Once you find one that works, double down and run that strategy until it rolls over and dies or you find a better one.
 
