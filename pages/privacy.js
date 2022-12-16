@@ -22,6 +22,7 @@ const Privacy = () => {
           <ul>
               <li><a href="https://stripe.com/privacy">Stripe Privacy Policy</a></li>
           </ul>
+          <p>We use Stripe for identity document verification. Stripe retains a copy of all the data provided as part of a verification. You may also have consented to allow Stripe to use your data to improve their technology. You can delete your information from Stripe’s servers or revoke your consent by visiting [Stripe support](https://support.stripe.com)</p>
           <p><br></br></p>
         </div>
         <p><strong>Cookies</strong></p>
