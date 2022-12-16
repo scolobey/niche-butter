@@ -16,6 +16,9 @@ const About = () => {
           <p>I'm a cook. I learned to build software to make <a href="https://www.funkyradish.com/FunkyRadish">FunkyRadish</a>, a recipe app that sucks less.</p>
           <p>I also build top secret blogs.</p>
           <p>Feel free to email me at minedied@gmail.com if you want.</p>
+
+          <p>Privacy Policy? <a href="/privacy">Click Here</a></p>
+
         </h2>
       </div>
     </div>
