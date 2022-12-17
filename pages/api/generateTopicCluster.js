@@ -10,6 +10,7 @@ const openai = new OpenAIApi(configuration);
 const basePromptPrefix = `Generate a list of 30 article ideas clustered around 3 broader topics, all falling under the subject of `;
 
 const generateTopicCluster = async (req, res) => {
+  console.log("generating cluster");
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
@@ -17,11 +18,8 @@ const generateTopicCluster = async (req, res) => {
     temperature: 0.7,
     max_tokens: 700,
   })
-  .catch(
-    console.log("caught on the base: " + error);
-    res.status(500)
-    res.render('error', { error: err })
-  );
+
+  console.log("updating credits: " + req.body.session.user.id);
 
   const basePromptOutput = baseCompletion.data.choices.pop();
 
@@ -31,11 +29,6 @@ const generateTopicCluster = async (req, res) => {
       credits: req.body.session.user.credits-100
     },
   })
-  .catch(
-    console.log("caught on the user creator: " + error);
-    res.status(500)
-    res.render('error', { error: err })
-  );;
 
   res.status(200).json({ output: basePromptOutput, user: prismaUser });
 };
