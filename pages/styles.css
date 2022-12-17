@@ -663,3 +663,11 @@ textarea {
   margin-left: 10px;
   border-radius: 50%;
 }
+
+.copy-button {
+  background-color: #04d9ff;
+  border-radius: 10px;
+  width: 33px;
+  cursor: pointer;
+  margin: auto;
+}

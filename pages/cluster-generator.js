@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from "next/link"
+import Image from 'next/image'
 
 import { useState } from 'react';
 import { useSession, signIn } from "next-auth/react"
@@ -15,6 +16,11 @@ const ClusterGenerator = () => {
   const reloadSession = () => {
     const event = new Event("visibilitychange");
     document.dispatchEvent(event);
+  };
+
+  const copyOutput = () => {
+    console.log("copying: " + apiOutput);
+    navigator.clipboard.writeText(apiOutput)
   };
 
   const goToCheckout = async () => {
@@ -71,6 +77,13 @@ const ClusterGenerator = () => {
         {apiOutput? (
           <div className="header-subtitle">
             <h2>Here are your topic clusters.</h2>
+            <Image
+              src="/images/copy.svg"
+              alt="Copy Icon"
+              width="32"
+              height="32"
+              onClick={copyOutput}
+            />
           </div>
         ) :(
           <div className="header-subtitle">
@@ -95,6 +108,7 @@ const ClusterGenerator = () => {
                     <div className="generate">
                       <p>Next!</p>
                     </div>
+
                   </a>
                 </div>
               </div>

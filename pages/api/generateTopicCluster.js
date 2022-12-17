@@ -16,7 +16,12 @@ const generateTopicCluster = async (req, res) => {
     prompt: `${basePromptPrefix}${req.body.userInput}`,
     temperature: 0.7,
     max_tokens: 700,
-  });
+  })
+  .catch(
+    console.log("caught on the base: " + error);
+    res.status(500)
+    res.render('error', { error: err })
+  );
 
   const basePromptOutput = baseCompletion.data.choices.pop();
 
@@ -25,7 +30,12 @@ const generateTopicCluster = async (req, res) => {
     data: {
       credits: req.body.session.user.credits-100
     },
-  });
+  })
+  .catch(
+    console.log("caught on the user creator: " + error);
+    res.status(500)
+    res.render('error', { error: err })
+  );;
 
   res.status(200).json({ output: basePromptOutput, user: prismaUser });
 };
