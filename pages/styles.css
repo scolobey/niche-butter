@@ -130,7 +130,7 @@ body {
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: grey;
+    background-color: var(--main-bg-color);
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
@@ -165,7 +165,7 @@ body {
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: white;
+    background-color: var(--main-bg-color);
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
@@ -199,7 +199,6 @@ textarea {
 .prompt-box:focus {
     border-color:rgba(255, 255, 255, 0.75)
 }
-
 
 .prompt-buttons {
     display: flex;
