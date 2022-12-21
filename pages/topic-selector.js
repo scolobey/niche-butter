@@ -74,7 +74,8 @@ const TopicSelector = () => {
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>First we need to pick a topic. Make a list of things you're interested in. Then scroll down and click submit.</h2>
+            <h2>We're gonna start you a blog.</h2>
+            <h2>First we need to pick you a topic. Make a list of things you're interested in. Then scroll down and click submit.</h2>
           </div>
         )}
 

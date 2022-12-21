@@ -9,8 +9,8 @@ const Home = () => {
       </Head>
 
       <div className="text-content">
-        <div className="header-subtitle">
-          <h2>Are you ready to tap into a buttery deluge of niche building lubricant?</h2>
+        <div className="header-grow">
+          <h2>Tap into a deluge of niche building lubricant.</h2>
         </div>
         <div className="prompt-buttons">
           <a
@@ -18,7 +18,7 @@ const Home = () => {
             href="topic-selector"
           >
             <div className="generate">
-              <p>Yes!</p>
+              <p>What!?</p>
             </div>
           </a>
         </div>

@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap');
 
+:root {
+  --main-bg-color: white;
+  --main-text-color: black;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--main-bg-color);
 }
 
 .root {
     display: flex;
     place-content: center flex-start;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--main-bg-color);
     flex-flow: column nowrap;
     gap: 10px;
     height: 100vh;
@@ -21,7 +26,7 @@ body {
 }
 
 .container {
-    background-color: black;
+    background-color: var(--main-bg-color);
     display: flex;
     place-content: center flex-start;
     align-items: center;
@@ -42,7 +47,7 @@ body {
     flex-direction: column;
     width: 100%;
     align-items: center;
-    color: #FFF
+    color: var(--main-text-color);
 }
 
 .header-title {
@@ -125,7 +130,7 @@ body {
     border-top-width: 1px;
     place-content: flex-start;
     align-items: flex-start;
-    background-color: white;
+    background-color: grey;
     border-radius: 16px;
     display: flex;
     flex: 0 0 auto;
@@ -146,7 +151,7 @@ body {
     letter-spacing: 0px;
     line-height: 1.6em;
     text-align: flex-start;
-    color: #746C64;
+    color: var(--main-text-color);;
     text-decoration: none;
     text-transform: none;
 }
@@ -181,7 +186,7 @@ body {
     letter-spacing: 0px;
     line-height: 1.6em;
     text-align: flex-start;
-    color: #746C64;
+    color: var(--main-text-color);;
     text-decoration: none;
     text-transform: none;
 }
@@ -246,7 +251,7 @@ textarea {
 .generate-button {
     place-content: flex-start;
     align-items: flex-start;
-    background-color: #ED3175;
+    background-color: #FF10F0;
     border-radius: 20px;
     display: flex;
     flex: 0 0 auto;
@@ -260,6 +265,10 @@ textarea {
     width: min-content;
     will-change: transform;
     cursor: pointer;
+}
+
+.generate-button:hover {
+  content: "Do it!"
 }
 
 .generate {
@@ -299,7 +308,7 @@ textarea {
     border-right-width: 1px;
     border-style: solid;
     border-top-width: 1px;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--main-bg-color);
     border-radius: 54.3478% / 238.095%;
     filter: grayscale(1);
     transform: none;
@@ -378,7 +387,7 @@ textarea {
     letter-spacing: 0px;
     line-height: 1.4em;
     text-align: flex-start;
-    color: #ffffff;
+    color: var(--main-text-color);
     text-decoration: none;
     text-transform: none;
     margin: 0;
@@ -404,7 +413,7 @@ textarea {
 
 /* Home Page */
 .text-content {
-  color: white;
+  color: var(--main-text-color);;
 }
 
  /* Tools Page */
@@ -541,7 +550,7 @@ textarea {
 }
 
 .blog-post-container {
-  color: white;
+  color: var(--main-text-color);;
   font-size: 22px;
   max-width: 575px;
 }
@@ -670,4 +679,25 @@ textarea {
   width: 33px;
   cursor: pointer;
   margin: auto;
+}
+
+.header-grow {
+  animation: growth 3s;
+  animation-fill-mode: backwards;
+  font-size: 1;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2em;
+  text-shadow: 1px 1px #FF10F0;
+  text-align: center;
+  color: #39FF14;
+}
+
+@keyframes growth {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: 1rem;
+  }
 }
