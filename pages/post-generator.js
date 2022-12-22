@@ -127,6 +127,9 @@ const PostGenerator = () => {
                             {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
                           </div>
                         </a>
+                        <div className="header-subtitle">
+                          <h2>-200 Credits</h2>
+                        </div>
                       </div>
                     ) : (
                       <a className='generate-button'

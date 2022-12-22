@@ -26,7 +26,7 @@ const Tools = () => {
           </li>
           <li>
             <a href="outline-generator">Blog Post from an Outline - 100 Credits</a>
-            <p>Generate an articel from an outline.</p>
+            <p>Generate an article from an outline.</p>
           </li>
           <li>
             <a href="competition-analyzer">Competition Analyzer - 100 Credits</a>

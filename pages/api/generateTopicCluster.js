@@ -20,6 +20,7 @@ const generateTopicCluster = async (req, res) => {
   })
 
   console.log("updating credits: " + req.body.session.user.id);
+  console.log("base: " + baseCompletion);
 
   const basePromptOutput = baseCompletion.data.choices.pop();
 

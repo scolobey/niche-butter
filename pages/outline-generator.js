@@ -122,6 +122,9 @@ const OutlineGenerator = () => {
                             {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
                           </div>
                         </a>
+                        <div className="header-subtitle">
+                          <h2>-100 Credits</h2>
+                        </div>
                       </div>
                     ) : (
                       <a className='generate-button'

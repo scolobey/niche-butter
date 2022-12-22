@@ -57,10 +57,17 @@ const ClusterGenerator = () => {
     const data = await response.json();
     const { output, user } = data;
 
-    reloadSession();
+    if (!data) {
+      setIsGenerating(false);
+      console.log("Error CALLING API");
+    } else {
+      const { output, user } = data;
 
-    setApiOutput(`${output.text}`);
-    setIsGenerating(false);
+      reloadSession();
+
+      setApiOutput(`${output.text}`);
+      setIsGenerating(false);
+    }
   }
 
   const onUserChangedText = (event) => {
@@ -78,6 +85,7 @@ const ClusterGenerator = () => {
           <div className="header-subtitle">
             <h2>Here are your topic clusters.</h2>
             <Image
+              className="copy-button"
               src="/images/copy.svg"
               alt="Copy Icon"
               width="32"
@@ -99,7 +107,7 @@ const ClusterGenerator = () => {
               value={apiOutput}
             />
               <div className="header-subtitle">
-                <h2>Copy these and paste them somewhere safe. One by one, we'll go ahead and generate a nice article about each one.</h2>
+                <h2>Copy these and paste them somewhere safe. One by one, we'll go ahead and generate an article on each topic.</h2>
                 <div className="prompt-buttons">
                   <a
                     className='generate-button'
@@ -135,6 +143,9 @@ const ClusterGenerator = () => {
                             {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
                           </div>
                         </a>
+                        <div className="header-subtitle">
+                          <h2>-100 Credits</h2>
+                        </div>
                       </div>
                     ) : (
                       <a className='generate-button'
