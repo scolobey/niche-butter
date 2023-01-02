@@ -31,6 +31,12 @@ const Tools = () => {
           <li>
             <a href="competition-analyzer">Competition Analyzer - 100 Credits</a>
             <p>Output a list of competitors in a chosen niche.</p>
+          </li>https://app.contentcurator.com/tools/niche-discovery/
+          <li>
+            <a href="https://app.contentcurator.com/tools/niche-discovery/">Niche Analyzer</a>
+            <p>This is a tool from Content Curator that will give you a great overview of the industry you're looking to get into.</p>
+            <p>Find your niche in the selector and get a sense of the amount of traffic that hits this niche.</p>
+            <p>You also get a strong start on the list of competitors in your niche which is crucial for a number of reasons.</p>
           </li>
         </ul>
       </div>
