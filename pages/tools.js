@@ -5,6 +5,7 @@ const Tools = () => {
     <div>
       <Head>
         <title>NicheButter | Tools</title>
+        <meta name="description" content="An epic collection of AI Blogging tools to generate content at lightspeed."/>
       </Head>
       <div className="tools-list">
         <ul>
@@ -23,6 +24,10 @@ const Tools = () => {
           <li>
             <a href="outline-generator">Outline Generator - 100 Credits</a>
             <p>Generate an outline for a chosen article topic.</p>
+          </li>
+          <li>
+            <a href="intro-generator">Intro Generator - 100 Credits</a>
+            <p>Need help getting started? Knock out an introduction crafted to convert, so you can move on with the meat of your article.</p>
           </li>
           <li>
             <a href="blog-title-generator">Title Generator - 100 Credits</a>
