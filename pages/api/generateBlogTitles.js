@@ -7,13 +7,17 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const basePromptPrefix = "Give me a list of 5 amazing headlines for an article serving the following search keywords: ";
-
 const generateBlogTitles = async (req, res) => {
+  const basePrompt =
+  `
+  Give me a list of 5 amazing titles for a blog post serving the given keyword. The exact keyword should appear near the beginning of the title. The title should not be more than 60 characters long.
+
+  keyword: ${req.body.userInput}
+  `
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `${basePromptPrefix}${req.body.userInput}`,
+    prompt: `${basePrompt}`,
     temperature: 0.7,
     max_tokens: 700,
   });
