@@ -18,20 +18,24 @@ const Tools = () => {
           </li>
           <li>
             <a href="post-generator">Post Generator - 200 Credits</a>
-            <p>Turn an outline into a comprehensive article.</p>
+            <p>Create a comprehensive article on any topic.</p>
           </li>
           <li>
             <a href="outline-generator">Outline Generator - 100 Credits</a>
             <p>Generate an outline for a chosen article topic.</p>
           </li>
           <li>
+            <a href="blog-title-generator">Title Generator - 100 Credits</a>
+            <p>Generate some titles for an article covering your given keywords.</p>
+          </li>
+          <li>
             <a href="outline-generator">Blog Post from an Outline - 100 Credits</a>
-            <p>Generate an article from an outline.</p>
+            <p>Turn an outline into a comprehensive article.</p>
           </li>
           <li>
             <a href="competition-analyzer">Competition Analyzer - 100 Credits</a>
             <p>Output a list of competitors in a chosen niche.</p>
-          </li>https://app.contentcurator.com/tools/niche-discovery/
+          </li>
           <li>
             <a href="https://app.contentcurator.com/tools/niche-discovery/">Niche Analyzer</a>
             <p>This is a tool from Content Curator that will give you a great overview of the industry you're looking to get into.</p>
