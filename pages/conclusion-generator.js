@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from 'react';
 import { useSession, signIn } from "next-auth/react"
 
-const IntroGenerator = () => {
+const ConclusionGenerator = () => {
 
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
@@ -41,7 +41,7 @@ const IntroGenerator = () => {
   const callEndpoint = async () => {
     setIsGenerating(true);
 
-    const response = await fetch('/api/generateBlogIntroduction', {
+    const response = await fetch('/api/conclusionGenerator', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,18 +65,18 @@ const IntroGenerator = () => {
   return (
     <div>
       <Head>
-        <title>NicheButter | AI Blog Introduction Generator</title>
-        <meta name="description" content="Generate blog introductions with the help of ChatGPT."/>
+        <title>NicheButter | AI Blog Conclusion Generator</title>
+        <meta name="description" content="Generate blog conclusions with the help of ChatGPT."/>
       </Head>
 
       <div className="container">
         {apiOutput? (
           <div className="header-subtitle">
-            <h2>And here's your intro...</h2>
+            <h2>And here's your conclusion...</h2>
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>Enter a topic and we'll write you an introduction for your blog post.</h2>
+            <h2>Enter a topic and we'll write you a conclusion for your blog post.</h2>
           </div>
         )}
 
@@ -159,4 +159,4 @@ const IntroGenerator = () => {
   );
 };
 
-export default IntroGenerator;
+export default ConclusionGenerator;

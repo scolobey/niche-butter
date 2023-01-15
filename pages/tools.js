@@ -38,6 +38,10 @@ const Tools = () => {
             <p>Turn an outline into a comprehensive article.</p>
           </li>
           <li>
+            <a href="conclusion-generator">Conclusion Generator - 100 Credits</a>
+            <p>Generate a blog post conclusion for a given topic.</p>
+          </li>
+          <li>
             <a href="listicle-generator">Listicle Generator - 300 Credits</a>
             <p>Input your topic. Get back a list of items with descriptions and commentary.</p>
           </li>

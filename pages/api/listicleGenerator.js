@@ -23,7 +23,7 @@ const generateListicle = async (req, res) => {
   // I build Prompt #2.
   const secondPrompt =
   `
-  For each item in the following list of ${req.body.userInput}, provide a description. Include notable features, as well as the positives and negatives of each item.
+  For each item in the following list of ${req.body.userInput}, generate a detailed description. Cover unique features and anything else relevant to the topic
 
   List:
   ${basePromptOutput.text}
