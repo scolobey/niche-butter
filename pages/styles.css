@@ -416,6 +416,10 @@ textarea {
 }
 
  /* Tools Page */
+ .tools-list ul {
+   list-style: none;
+ }
+
  .tools-list li {
    padding: 10px;
  }
