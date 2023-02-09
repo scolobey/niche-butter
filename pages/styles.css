@@ -72,7 +72,6 @@ body {
     font-weight: 400;
     line-height: 1.4em;
     text-align: center;
-    color: #39FF14;
 }
 
 .header-subtitle a {
@@ -118,7 +117,6 @@ body {
     gap: 16px;
     height: min-content;
     padding: 0px;
-    width: min-content;
 }
 
 .prompt-box {
@@ -266,8 +264,23 @@ textarea {
     cursor: pointer;
 }
 
-.generate-button:hover {
-  content: "Do it!"
+.confusion-button {
+    place-content: flex-start;
+    align-items: flex-start;
+    background-color: #39FF14;
+    border-radius: 20px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: column nowrap;
+    gap: 10px;
+    height: 18px;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    text-decoration: none;
+    width: 65px;
+    will-change: transform;
+    cursor: pointer;
 }
 
 .generate {

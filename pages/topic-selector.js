@@ -7,6 +7,7 @@ import { useSession, signIn } from "next-auth/react"
 const TopicSelector = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
+
   const [isGenerating, setIsGenerating] = useState(false)
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
@@ -74,8 +75,7 @@ const TopicSelector = () => {
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>Let's generate content that ranks on Google.</h2>
-            <h2>First we need a topic. Make a list of things you're interested in. Then scroll down and click submit.</h2>
+            <h2>What kinda stuff are you interested in?</h2>
           </div>
         )}
 

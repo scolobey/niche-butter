@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from "next/link"
 import Image from 'next/image'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSession, signIn } from "next-auth/react"
 
 const ClusterGenerator = () => {
@@ -74,6 +74,26 @@ const ClusterGenerator = () => {
     setUserInput(event.target.value);
   };
 
+  const [topic, setTopic] = useState('');
+
+  useEffect(() => {
+    // Perform localStorage action
+    const item = localStorage.getItem('topic')
+
+    if (item && item.length > 0) {
+      setUserInput(item)
+
+      if (session) {
+        console.log(session);
+
+        callEndpoint()
+      } else {
+        // signIn()
+        console.log("no session?");
+      }
+    }
+  }, [])
+
   return (
     <div>
       <Head>
@@ -81,6 +101,7 @@ const ClusterGenerator = () => {
       </Head>
 
       <div className="container">
+        {topic}
         {apiOutput? (
           <div className="header-subtitle">
             <h2>Here are your topic clusters.</h2>
@@ -95,7 +116,7 @@ const ClusterGenerator = () => {
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>Now let's make a list of topics to cover. We'll group our topics under 3 parent clusters.</h2>
+            <h2>Let's make a content plan. We'll group our topics under 3 parent clusters.</h2>
           </div>
         )}
 
