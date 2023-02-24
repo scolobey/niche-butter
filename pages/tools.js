@@ -15,7 +15,7 @@ const Tools = () => {
           </li>
           <li>
             <a href="cluster-generator">Cluster Generator - 100 Credits</a>
-            <p>Assemble a list of article topics culstered around 3 subtopics in a given niche.</p>
+            <p>Create a list of article topics clustered into 3 groups.</p>
           </li>
           <li>
             <a href="post-generator">Post Generator - 200 Credits</a>

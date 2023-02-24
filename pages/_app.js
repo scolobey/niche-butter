@@ -5,6 +5,7 @@ import Script from "next/script"
 import { useTheme } from 'next-themes'
 import { SessionProvider } from "next-auth/react"
 import Header from "./components/header.js";
+import Alert from "./components/alert.js";
 
 function App({
   Component,
@@ -37,6 +38,7 @@ function App({
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </Head>
       <div className="container">
+        <Alert />
         <Header />
         <Component {...pageProps} />
       </div>
