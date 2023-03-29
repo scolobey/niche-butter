@@ -5,10 +5,10 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import { useSession, signIn } from "next-auth/react"
 
-const ClusterGenerator = () => {
+const KeywordCollector = () => {
   const [userInput, setUserInput] = useState('');
-  const [apiOutput, setApiOutput] = useState('')
-  const [isGenerating, setIsGenerating] = useState(false)
+  const [keywordOutput, setKeywordOutput] = useState('');
+  const [isLoadingKeywords, setIsLoadingKeywords] = useState(false);
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
   const { data: session } = useSession()
@@ -19,8 +19,7 @@ const ClusterGenerator = () => {
   };
 
   const copyOutput = () => {
-    console.log("copying: " + apiOutput);
-    navigator.clipboard.writeText(apiOutput)
+    console.log("export? ");
   };
 
   const goToCheckout = async () => {
@@ -44,29 +43,27 @@ const ClusterGenerator = () => {
   };
 
   const callEndpoint = async () => {
-    setIsGenerating(true);
+    setIsLoadingKeywords(true);
 
-    const response = await fetch('/api/generateTopicCluster', {
-      method: 'POST',
+    const response = await fetch('/api/keywordCollector', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userInput, session }),
+      }
     });
 
     const data = await response.json();
-    const { output, user } = data;
 
     if (!data) {
-      setIsGenerating(false);
+      setIsLoadingKeywords(false);
       console.log("Error CALLING API");
     } else {
       const { output, user } = data;
 
       reloadSession();
 
-      setApiOutput(`${output.text}`);
-      setIsGenerating(false);
+      setKeywordOutput(`${data.keywords[0]}`);
+      setIsLoadingKeywords(false);
     }
   }
 
@@ -74,37 +71,16 @@ const ClusterGenerator = () => {
     setUserInput(event.target.value);
   };
 
-  const [topic, setTopic] = useState('');
-
-  useEffect(() => {
-    // Perform localStorage action
-    const item = localStorage.getItem('topic')
-
-    if (item && item.length > 0) {
-      setUserInput(item)
-
-      if (session) {
-        console.log(session);
-
-        callEndpoint()
-      } else {
-        // signIn()
-        console.log("no session?");
-      }
-    }
-  }, [])
-
   return (
     <div>
       <Head>
-        <title>NicheButter | Keyword Cluster Generator</title>
+        <title>NicheButter | Keyword Collector</title>
       </Head>
 
       <div className="container">
-        {topic}
-        {apiOutput? (
+        {keywordOutput? (
           <div className="header-subtitle">
-            <h2>Here are your topic clusters.</h2>
+            <h2>Here are your keywords.</h2>
             <Image
               className="copy-button"
               src="/images/copy.svg"
@@ -114,21 +90,21 @@ const ClusterGenerator = () => {
               onClick={copyOutput}
             />
           </div>
-        ) :(
+        ) : (
           <div className="header-subtitle">
-            <h2>Let's make a content plan. We'll group our topics under 3 parent clusters.</h2>
+            <h2>Let's collect some keywords.</h2>
           </div>
         )}
 
         <div>
-          {apiOutput? (
+          { keywordOutput ? (
             <div className="output">
             <textarea
               className="prompt-box-tall"
-              value={apiOutput}
+              value={keywordOutput}
             />
               <div className="header-subtitle">
-                <h2>Copy these and paste them somewhere safe. One by one, we'll go ahead and generate an article on each topic.</h2>
+                <h2>Should we generate some posts?</h2>
                 <div className="prompt-buttons">
                   <a
                     className='generate-button'
@@ -137,7 +113,6 @@ const ClusterGenerator = () => {
                     <div className="generate">
                       <p>Next!</p>
                     </div>
-
                   </a>
                 </div>
               </div>
@@ -157,11 +132,11 @@ const ClusterGenerator = () => {
                     {session.user.credits >= 100 ? (
                       <div>
                         <a
-                          className={isGenerating ? 'generate-button loading' : 'generate-button'}
+                          className={isLoadingKeywords ? 'generate-button loading' : 'generate-button'}
                           onClick={callEndpoint}
                         >
                           <div className="generate">
-                            {isGenerating ? <span className="loader"></span> : <p>Submit</p>}
+                            {isLoadingKeywords ? <span className="loader"></span> : <p>Submit</p>}
                           </div>
                         </a>
                         <div className="header-subtitle">
@@ -200,4 +175,4 @@ const ClusterGenerator = () => {
   );
 };
 
-export default ClusterGenerator;
+export default KeywordCollector;

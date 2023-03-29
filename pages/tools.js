@@ -14,7 +14,7 @@ const Tools = () => {
             <p>Need help chosing what niche to target? Input all of the topics you're thinking of, and we'll pick the most valuable one.</p>
           </li>
           <li>
-            <a href="cluster-generator">Cluster Generator - 100 Credits</a>
+            <a href="keyword-cluster-generator">Cluster Generator - 100 Credits</a>
             <p>Create a list of article topics clustered into 3 groups.</p>
           </li>
           <li>

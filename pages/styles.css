@@ -34,7 +34,6 @@ body {
     flex-flow: column nowrap;
     gap: 10px;
     height: fit-content;
-    max-width: 575px;
     min-height: 100%;
     overflow: auto;
     position: relative;
@@ -735,4 +734,24 @@ textarea {
   margin: auto;
   z-index: 100;
   padding: 15px;
+}
+
+.site-selector {
+  list-style: none;
+  text-align: center;
+  background-color: #39FF14;
+  color: white;
+  box-shadow: 3px 3px 4px #FF10F0;
+  font-size: 16px;
+  border: 2px solid #FF10F0;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 5px;
+  margin: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-selector:hover {
+  box-shadow: 4px 4px 6px #04d9ff;
 }

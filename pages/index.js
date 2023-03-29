@@ -15,7 +15,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-content">
+    <div className="content">
       <Head>
         <title>NicheButter | A Niche Blogging Toolset</title>
       </Head>
@@ -38,7 +38,7 @@ const Home = () => {
           <a
             className='generate-button'
             onClick={sendTopic}
-            href="cluster-generator"
+            href="keyword-cluster-generator"
           >
             <div className="generate">
               <p>Submit</p>

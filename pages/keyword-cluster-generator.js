@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Link from "next/link"
+import Image from 'next/image'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSession, signIn } from "next-auth/react"
 
-const TopicSelector = () => {
+const KeywordClusterGenerator = () => {
   const [userInput, setUserInput] = useState('');
   const [apiOutput, setApiOutput] = useState('')
-
   const [isGenerating, setIsGenerating] = useState(false)
   const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
@@ -16,6 +16,11 @@ const TopicSelector = () => {
   const reloadSession = () => {
     const event = new Event("visibilitychange");
     document.dispatchEvent(event);
+  };
+
+  const copyOutput = () => {
+    console.log("copying: " + apiOutput);
+    navigator.clipboard.writeText(apiOutput)
   };
 
   const goToCheckout = async () => {
@@ -41,7 +46,7 @@ const TopicSelector = () => {
   const callEndpoint = async () => {
     setIsGenerating(true);
 
-    const response = await fetch('/api/selectTopic', {
+    const response = await fetch('/api/generateTopicCluster', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,49 +57,87 @@ const TopicSelector = () => {
     const data = await response.json();
     const { output, user } = data;
 
-    reloadSession();
+    if (!data) {
+      setIsGenerating(false);
+      console.log("Error CALLING API");
+    } else {
+      const { output, user } = data;
 
-    setApiOutput(`${output.text}`);
-    setIsGenerating(false);
+      reloadSession();
+
+      setApiOutput(`${output.text}`);
+      setIsGenerating(false);
+    }
   }
 
   const onUserChangedText = (event) => {
     setUserInput(event.target.value);
   };
 
+  const [topic, setTopic] = useState('');
+
+  useEffect(() => {
+    // Perform localStorage action
+    const item = localStorage.getItem('topic')
+
+    if (item && item.length > 0) {
+      setUserInput(item)
+
+      if (session) {
+        console.log(session);
+
+        callEndpoint()
+      } else {
+        // signIn()
+        console.log("no session?");
+      }
+    }
+  }, [])
+
   return (
     <div>
       <Head>
-        <title>NicheButter | Topic Selector</title>
+        <title>NicheButter | Keyword Cluster Generator</title>
       </Head>
 
       <div className="container">
+        {topic}
         {apiOutput? (
           <div className="header-subtitle">
-            <h2>And here's your recommended topic...</h2>
+            <h2>Here are your topic clusters.</h2>
+            <Image
+              className="copy-button"
+              src="/images/copy.svg"
+              alt="Copy Icon"
+              width="32"
+              height="32"
+              onClick={copyOutput}
+            />
           </div>
         ) :(
           <div className="header-subtitle">
-            <h2>What kinda stuff are you interested in?</h2>
+            <h2>Let's make a content plan. We'll group our topics under 3 parent clusters.</h2>
           </div>
         )}
 
         <div>
           {apiOutput? (
             <div className="output">
-              <div className="output-content">
-                <p>{apiOutput}</p>
-              </div>
+            <textarea
+              className="prompt-box-tall"
+              value={apiOutput}
+            />
               <div className="header-subtitle">
-                <h2>Now let's generate some associated topic clusters.</h2>
+                <h2>Copy these and paste them somewhere safe. One by one, we'll go ahead and generate an article on each topic.</h2>
                 <div className="prompt-buttons">
                   <a
                     className='generate-button'
-                    href="keyword-cluster-generator"
+                    href="post-generator"
                   >
                     <div className="generate">
-                      <p>OK!</p>
+                      <p>Next!</p>
                     </div>
+
                   </a>
                 </div>
               </div>
@@ -102,8 +145,8 @@ const TopicSelector = () => {
           ) : (
             <div className="prompt-container">
               <textarea
-                className="prompt-box-tall"
-                placeholder="Enter a bunch of your favorite topics..."
+                className="prompt-box"
+                placeholder="What's your topic?"
                 value={userInput}
                 onChange={onUserChangedText}
               />
@@ -157,4 +200,4 @@ const TopicSelector = () => {
   );
 };
 
-export default TopicSelector;
+export default KeywordClusterGenerator;
